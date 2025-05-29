@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tyba-api
+    restart: always
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=tyba
+      - JWT_SECRET=your_jwt_secret_key_change_in_production
+      - JWT_EXPIRES_IN=24h
+      - RESTAURANTS_API_KEY=${RESTAURANTS_API_KEY}
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - tyba-network
+    env_file:
+      - .env
+
+
+  postgres:
+    image: postgres:13
+    container_name: tyba-postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=tyba
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tyba-network
+    env_file:
+      - .env
+
+networks:
+  tyba-network:
+
+volumes:
+  postgres_data:
