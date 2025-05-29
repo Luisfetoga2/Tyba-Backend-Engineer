@@ -56,19 +56,22 @@ Este proyecto es una API RESTful desarrollada en **Node.js** usando **NestJS** y
 ```
 - **Respuestas:**
   - 201 Created: `{ "transaction": { ... }, "apiResult": { ... } }`
-  - 401/403 Unauthorized/Forbidden: Si el JWT es inválido o está en blacklist
+  - 401 Unauthorized: Si el JWT es inválido
+  - 403 Forbidden: Si el JWT está en blacklist
 
 ### 4. Historial de Transacciones
 - **GET** `/transactions` _(Requiere JWT)_
 - **Respuestas:**
   - 200 OK: `[ { "id": "...", "city": "...", "coordinates": "...", "date": "..." }, ... ]`
-  - 401/403 Unauthorized/Forbidden
+  - 401 Unauthorized: Si el JWT es inválido
+  - 403 Forbidden: Si el JWT está en blacklist
 
 ### 5. Logout
 - **POST** `/auth/logout` _(Requiere JWT)_
 - **Respuestas:**
   - 200 OK: `{ "message": "Logged out successfully", ... }`
-  - 401/403 Unauthorized/Forbidden
+  - 401 Unauthorized: Si el JWT es inválido
+  - 403 Forbidden: Si el JWT está en blacklist
 
 ---
 
