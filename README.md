@@ -113,8 +113,11 @@ Este proyecto es una API RESTful desarrollada en **Node.js** usando **NestJS** y
 
 ## Pruebas
 - Se implementaron **pruebas unitarias** para los servicios principales (`user`, `auth`, `transaction`).
+  
 <img src="Assets/unit.png" alt="Pruebas unitarias" style="width:auto; height:auto; max-width:400px; display:block; margin-bottom:10px;" />
+
 - Se implementaron **pruebas e2e** para todos los flujos principales (registro, login, endpoints protegidos, logout, historial, búsqueda de restaurantes).
+  
 ![Pruebas e2e](Assets/e2e.png)
 
 ---
