@@ -8,6 +8,12 @@ Este proyecto es una API RESTful desarrollada en **Node.js** usando **NestJS** y
 
 ## Endpoints y Ejemplos
 
+### 0. Health Check
+- **GET** `/`
+- **Descripción:** Endpoint para verificar que el servidor está corriendo correctamente.
+- **Respuesta:**
+  - 200 OK: `Service is running!`
+
 ### 1. Registro de Usuario
 - **POST** `/auth/register`
 - **Body:**
